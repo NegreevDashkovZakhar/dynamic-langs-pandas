@@ -5,6 +5,12 @@ import numpy as np
 df = pd.read_csv("games.csv")
 
 df["moves_made"] = df["moves"].apply(lambda moves: int(np.floor(len(moves.split(' '))/2)))
+df["opening_name"] = df["opening_name"].apply(lambda name: name.split(":")[0])
+
+# 1.1
+openings = df["opening_name"].value_counts().head(5)
+plt.bar(openings.index,openings)
+plt.show()
 
 
 # 1.2
@@ -40,4 +46,5 @@ plt.scatter(moves_to_win.index, moves_to_win )
 
 plt.show()
 
+# 2
 
