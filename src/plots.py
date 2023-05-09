@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import plotly.express as px
 
 df = pd.read_csv("games.csv")
 
@@ -60,3 +61,9 @@ plt.show()
 
 df.boxplot(column=["avg_rating"], by=["opening_ply"])
 plt.show()
+
+# 5
+
+best_openings=df["opening_name"].value_counts().head(25).reset_index()
+fig = px.pie(best_openings,names="index",values="opening_name")
+fig.show()
